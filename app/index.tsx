@@ -2,7 +2,7 @@ import { View, Text, ScrollView, Button,
     StyleSheet, SafeAreaView, Platform, 
     TouchableOpacity} from "react-native";
 import {useState, useEffect} from "react";
-import {StatusBar} from "expo-status-bar";
+import {StatusBar} from "react-native";
 import {HeaderTab} from "../src/components/Header";
 import Timer from "../src/components/Timer"
 import {Audio} from "expo-av";
@@ -47,33 +47,36 @@ export default function App (){
     }
 
     return(
-        //This SafeAreaView works only with IOS devices.
-        <SafeAreaView style={[styles.container, {backgroundColor: colors[currentTimeIndex]}]}>
-            <View style={{paddingHorizontal:15, 
-            paddingTop: Platform.OS === "android" && 10,
-            flex:1}}>
-                <StatusBar style="inverted" backgroundColor={colors[currentTimeIndex]} />
-                <View style={styles.containerTabs}>
-                    <Text style={styles.textsTitle}>POMODORO</Text>
-                    <HeaderTab setTime={setTime} 
-                    currentTimeIndex={currentTimeIndex} 
-                    setCurrentTimeIndex={setCurrentTimeIndex} 
-                    setIsActive={setIsActive}/>
+        <>
+            <StatusBar  backgroundColor={"#333"} />
+            <View style={[styles.container, {backgroundColor: colors[currentTimeIndex]}]}>
+                
+                <View style={{paddingHorizontal:15, 
+                paddingTop: Platform.OS === "android" && 35,
+                flex:1}}>
+                    <View style={styles.containerTabs}>
+                        <Text style={styles.textsTitle}>POMODORO LEANDRO</Text>
+                        <HeaderTab setTime={setTime} 
+                        currentTimeIndex={currentTimeIndex} 
+                        setCurrentTimeIndex={setCurrentTimeIndex} 
+                        setIsActive={setIsActive}/>
+                    </View>
+                    <Timer time={time}/>
+                    <TouchableOpacity style={styles.buttonStart} onPress={handleActive}>
+                        <Text style={{color:"#fff",
+                            fontWeight: "bold",
+                            textAlign:"center"
+                        }}>{isActive ? "STOP" : "START"}</Text>
+                    </TouchableOpacity>
                 </View>
-                <Timer time={time}/>
-                <TouchableOpacity style={styles.buttonStart} onPress={handleActive}>
-                    <Text style={{color:"#fff",
-                        fontWeight: "bold",
-                        textAlign:"center"
-                    }}>{isActive ? "STOP" : "START"}</Text>
-                </TouchableOpacity>
             </View>
-        </SafeAreaView>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
     containerTabs:{
+        marginBottom:20,
         justifyContent:"center",
         alignItems:"center"
     },
@@ -88,10 +91,11 @@ const styles = StyleSheet.create({
         backgroundColor:"#444",
         alignItems:"center",
         padding:15,
-        marginTop:15,
+        marginTop:25,
         borderRadius: 15
     },
     textsTitle:{
+        marginBottom:20,
         fontWeight:"bold",
         fontSize:25,
         color:"#333"

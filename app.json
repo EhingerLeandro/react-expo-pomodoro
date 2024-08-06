@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "react-expo-pomodoro",
+    "name": "Pomodoro Leandro",
     "slug": "react-expo-pomodoro",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,20 +17,29 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.react.pomodoro.leandro"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/icon.png"
     },
     "plugins": [
       "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "45bde765-0cd0-43bd-8944-55d76bd03e9f"
+      }
     }
   }
 }
