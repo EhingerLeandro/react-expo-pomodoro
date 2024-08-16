@@ -8,14 +8,14 @@ export default function Timer ({time}){
         .padStart(2,"0")}`
    
     return(
-    <View style={styles.container}>
+    <View style={styles.containTime}>
         <Text style={styles.timer}>{formatTime}</Text>
     </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
+    containTime:{
         marginTop:10,
         backgroundColor:"#fff",
         alignItems:"center",
